@@ -1,0 +1,62 @@
+-- use hackaton;
+-- CREATE TABLE IF NOT EXISTS `users` (
+--   `id` INT NOT NULL AUTO_INCREMENT,
+--   `name` VARCHAR(255) NOT NULL,
+--   `email` VARCHAR(255) NOT NULL,
+--   `photo` VARCHAR(45) NOT NULL,
+--   `points` INT NOT NULL,
+--   PRIMARY KEY (`id`));
+
+-- CREATE TABLE IF NOT EXISTS `group` (
+--   `id` INT NOT NULL,
+--   `description` VARCHAR(255) NOT NULL,
+--   PRIMARY KEY (`id`));
+
+-- CREATE TABLE `questions` (
+--   `id` INT NOT NULL AUTO_INCREMENT,
+--   `description` VARCHAR(255) NOT NULL,
+--   `video_url` BLOB NULL,
+--   `correct_alternative` CHAR(1) NOT NULL,
+--   `points` INT NOT NULL,
+--   `status` INT NOT NULL,
+--   `group_id` INT NOT NULL,
+--   PRIMARY KEY (`id`),
+--   INDEX `fk_questions_1_idx` (`group_id` ASC),
+--   CONSTRAINT `fk_questions_group_id`
+--     FOREIGN KEY (`group_id`)
+--     REFERENCES `group` (`id`));
+
+-- CREATE TABLE `responses` (
+--   `id` INT NOT NULL AUTO_INCREMENT,
+--   `alternative` CHAR(1) NOT NULL,
+--   `decription` VARCHAR(255) NULL,
+--   `video_url` BLOB NULL,
+--   `question_id` INT NOT NULL,
+--   PRIMARY KEY (`id`),
+--   INDEX `fk_responses_question_id_idx` (`question_id` ASC),
+--   CONSTRAINT `fk_responses_question_id`
+--     FOREIGN KEY (`question_id`)
+--     REFERENCES `questions` (`id`)
+--     ON DELETE NO ACTION
+--     ON UPDATE NO ACTION);
+
+-- CREATE TABLE IF NOT EXISTS `historic` (
+--   `id` INT NOT NULL AUTO_INCREMENT,
+--   `user_id` INT NOT NULL,
+--   `question_id` INT NOT NULL,
+--   `status` INT NOT NULL,
+--   `altenative` CHAR(1) NOT NULL,
+--   `points` INT NOT NULL,
+--   PRIMARY KEY (`id`),
+--   INDEX `fk_historic_user_id_idx` (`user_id` ASC),
+--   INDEX `fk_historic_question_id_idx` (`question_id` ASC),
+--   CONSTRAINT `fk_historic_user_id`
+--     FOREIGN KEY (`user_id`)
+--     REFERENCES `users` (`id`)
+--     ON DELETE NO ACTION
+--     ON UPDATE NO ACTION,
+--   CONSTRAINT `fk_historic_question_id`
+--     FOREIGN KEY (`question_id`)
+--     REFERENCES `questions` (`id`)
+--     ON DELETE NO ACTION
+--     ON UPDATE NO ACTION);
